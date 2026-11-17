@@ -15,7 +15,7 @@ Engram is a local-first "second brain" app for Android (7.0+, 64-bit). It is fre
 - Organises itself: thoughts link to related thoughts and gather into named groups, including links by meaning using a small on-device model (50+ languages). A map view shows the groups.
 - Brings things back: reminders from plain words ("call mum tomorrow 6pm"), to-dos, a daily question about an older thought, weekly review, monthly recap, "on this day".
 - Turns ideas into next steps: gather a group into one note, or open Claude or ChatGPT with the group drafted as a request for a plan.
-- Private: no analytics, no tracking, works offline, backups only when the user makes them.
+- Private: no tracking, notes never leave the phone, works offline, backups only when the user makes them. Optional anonymous daily usage counts, only if the user says yes.
 
 ## Links
 - [Download the latest release](${RELEASES_URL})

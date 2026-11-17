@@ -38,7 +38,7 @@ export default async function OG() {
           </span>
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#5A5F66" }}>
-          A second brain for your phone. One step to save. It sorts itself. Nothing leaves your phone.
+          A second brain for your phone. One step to save. It sorts itself. Your notes stay on your phone.
         </div>
       </div>
     ),

@@ -6,7 +6,7 @@ The domain is `engrm.app`, spelled without the "a" on purpose because engram.app
 
 The landing website for [Engram](https://github.com/pavitra14/engram), the local-first second brain for Android.
 
-Next.js (App Router). Every page is rendered on the server, so search engines and direct links (`/privacy`, `/terms`, `/contact`) get full HTML with no client-side routing needed. The home page re-renders on the server once an hour and reads the newest GitHub release, so the beta version shown on the site updates itself after each app release.
+Next.js (App Router). Every page is rendered on the server, so search engines and direct links (`/privacy`, `/terms`, `/contact`) get full HTML with no client-side routing needed. The home page re-renders on the server once an hour and reads the newest GitHub release, so the version shown on the site updates itself after each app release. No version number is written into the code: if GitHub can't be reached, the page leaves the number out and links to the releases page. Pre-releases are skipped (GitHub's "latest" ignores them), so a build still being tested never appears until the owner promotes it.
 
 ## Pages
 
@@ -64,7 +64,7 @@ Lighthouse (mobile, home page): SEO 100, accessibility 100, best practices 100, 
 
 Follows the app's design system (`docs/DESIGN.md` in the engram repo): Newsreader for headlines and the person's words, Inter for everything else, paper-and-ink light theme and a true-black dark theme picked from the visitor's system setting, pills and hairlines, no shadows, and one loud cobalt button per view. Screenshots in `public/screens/` come from `docs/screenshots/` in the app repo.
 
-Fonts are self-hosted from `@fontsource`. The only third-party script is Google Tag Manager (`GTM_ID` in `lib/site.ts`, overridable with the `GTM_ID` environment variable), for website analytics; the privacy page describes it. The app itself has no analytics.
+Fonts are self-hosted from `@fontsource`. The only third-party script is Google Tag Manager (`GTM_ID` in `lib/site.ts`, overridable with the `GTM_ID` environment variable), for website analytics; the privacy page describes it. The app has no tracking; its optional, opt-in usage counts are described on the privacy page.
 
 ## Keeping the legal pages in step
 

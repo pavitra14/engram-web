@@ -77,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {/* Google Tag Manager (website analytics only; the app has none) */}
+        {/* Google Tag Manager (website analytics only; the app has no tracking) */}
         <Script id="gtm-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

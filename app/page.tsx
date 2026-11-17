@@ -27,7 +27,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Where are my notes stored?",
-    a: "On your phone, in the app's private storage. There's no account and nothing is uploaded. You can make a backup file whenever you like and keep it wherever you want.",
+    a: "On your phone, in the app's private storage. There's no account and your notes are never uploaded. You can make a backup file whenever you like and keep it wherever you want.",
   },
   {
     q: "Does it need the internet?",
@@ -71,13 +71,13 @@ export default async function Home() {
         "Voice notes transcribed on the phone",
         "Automatic linking and grouping by meaning",
         "Reminders from plain words",
-        "Works offline, no account, nothing uploaded",
+        "Works offline, no account, notes stay on your phone",
       ],
       publisher: { "@id": `${SITE_URL}/#org` },
       isAccessibleForFree: true,
       operatingSystem: "Android 7.0 or later",
       description: DESCRIPTION,
-      softwareVersion: release.tag.replace(/^v/, ""),
+      ...(release.tag ? { softwareVersion: release.tag.replace(/^v/, "") } : {}),
       downloadUrl: release.url,
       url: SITE_URL,
       sameAs: [REPO_URL],
@@ -103,14 +103,14 @@ export default async function Home() {
         <div className="wrap hero-grid">
           <div>
             <a className="pill" href={release.url} rel="noopener">
-              <span className="dot" /> Free beta for Android · {release.label}
+              <span className="dot" /> Free beta for Android{release.label ? ` · ${release.label}` : ""}
             </a>
             <h1>
               Catch the thought before the next <em>notification</em> does.
             </h1>
             <p className="lead">
               Engram is a second brain for your phone. Save any idea in one step, by talking, typing or sharing from any
-              app, and it sorts itself. No folders. No account. Nothing leaves your phone.
+              app, and it sorts itself. No folders. No account. Your notes never leave your phone.
             </p>
             <div className="hero-ctas">
               <a className="btn btn-primary" href={release.url} rel="noopener">
@@ -371,7 +371,7 @@ export default async function Home() {
           <div>
             <ul className="ticks">
               <li><Check /> No account needed. Ever.</li>
-              <li><Check /> No ads, no analytics, no tracking in the app.</li>
+              <li><Check /> No ads and no tracking. Anonymous usage counts only if you say yes.</li>
               <li><Check /> Voice is turned into text on your phone.</li>
               <li><Check /> Text in photos is read on your phone, too.</li>
               <li><Check /> Downloads happen only when you switch a feature on.</li>
@@ -389,7 +389,7 @@ export default async function Home() {
         <div className="wrap">
           <div className="beta">
             <div>
-              <p className="eyebrow">Now in beta · {release.label}</p>
+              <p className="eyebrow">Now in beta{release.label ? ` · ${release.label}` : ""}</p>
               <h2 className="h2">It&apos;s in beta. Come break it.</h2>
               <p className="lead">
                 Engram is free and ready for everyday use, but it&apos;s young, so you might find rough edges. Keep a backup,

@@ -6,7 +6,7 @@ import { CONTACT_EMAIL, ISSUES_URL, LEGAL_EFFECTIVE } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description:
-    "What Engram does with your information. Short version: what you write stays on your phone. No account, no ads, no analytics in the app.",
+    "What Engram does with your information. Short version: your notes stay on your phone. No account, no ads, no tracking.",
   path: "/privacy",
 });
 
@@ -16,7 +16,7 @@ export default function Privacy() {
       <JsonLd data={breadcrumbLd("Privacy Policy", "/privacy")} />
       <h1>Privacy Policy</h1>
       <p className="updated">
-        Effective {LEGAL_EFFECTIVE}. Applies to Engram for Android, version 0.7 and later, and to this website.
+        Effective {LEGAL_EFFECTIVE}. Applies to Engram for Android, version 0.8 and later, and to this website.
       </p>
 
       <div className="summary">
@@ -32,6 +32,7 @@ export default function Privacy() {
         <a className="pill" href="#phone">On your phone</a>
         <a className="pill" href="#permissions">Permissions</a>
         <a className="pill" href="#network">Network requests</a>
+        <a className="pill" href="#usage">Usage counts</a>
         <a className="pill" href="#cloud">Engram Cloud</a>
         <a className="pill" href="#website">This website</a>
         <a className="pill" href="#rights">Your rights</a>
@@ -40,7 +41,16 @@ export default function Privacy() {
 
       <h2 id="short">The short version</h2>
       <ul>
-        <li>The Engram app has no analytics, no advertising and no tracking. We do not sell, rent or share your information.</li>
+        <li>
+          The Engram app has no advertising and no tracking. It never gives you, your phone or your install an id, never
+          records what you do moment by moment, and never builds a profile of you. We do not sell, rent or share your
+          information.
+        </li>
+        <li>
+          <strong>Usage counts are your choice.</strong> When you first open Engram, it asks whether you&apos;d like to
+          send an anonymous daily count of which features you used. Nothing is counted unless you say yes, it never
+          includes your notes, and you can change your answer any time in Settings.
+        </li>
         <li>Everything you capture is stored in the app&apos;s private storage on your phone.</li>
         <li>You need no account. Without one, none of your notes, recordings, photos or files leave the phone.</li>
         <li>The app makes a few network requests that carry none of your content. They are listed below.</li>
@@ -97,8 +107,7 @@ export default function Privacy() {
 
       <h2 id="network">Network requests the app makes</h2>
       <p>
-        Without an account, Engram contacts other services only in these cases. None of them carries your notes or
-        anything you wrote.
+        Without an account, Engram makes only these requests. None of them carries your notes or anything you wrote.
       </p>
       <div className="table">
         <table>
@@ -107,6 +116,7 @@ export default function Privacy() {
           </thead>
           <tbody>
             <tr><td>Each time the app starts</td><td>Engram&apos;s server (Supabase, Mumbai region)</td><td>A request for which unfinished features are switched on. It includes no account or device id.</td></tr>
+            <tr><td>Once a day, only if you said yes to usage counts</td><td>Engram&apos;s server (Supabase, Mumbai region)</td><td>A finished day&apos;s anonymous feature counts, three rough ranges and the app version. No id and no content. See <a href="#usage">Usage counts</a>.</td></tr>
             <tr><td>Only if you turn on &ldquo;Understand meaning&rdquo; or download the Ask model</td><td>Hugging Face (models published by Software Mansion)</td><td>A download of the language model. The library&apos;s usage reporting is switched off.</td></tr>
             <tr><td>Only if you turn on translation</td><td>Google ML Kit</td><td>A download of the language pack for each language.</td></tr>
             <tr><td>Only if you install the offline speech pack</td><td>Android, through Google&apos;s speech services</td><td>Handled by Android, not by Engram.</td></tr>
@@ -126,6 +136,54 @@ export default function Privacy() {
       <p>
         <strong>Opening links and files.</strong> When you open a web link or a file from a note, it opens in another
         app, under that app&apos;s terms.
+      </p>
+
+      <h2 id="usage">Usage counts (only if you say yes)</h2>
+      <p>
+        <strong>Why we ask.</strong> Engram is made by one person. Knowing roughly how many people use it, and which
+        features they use, decides what gets fixed and built next. We wanted that without watching anyone, so the app
+        counts, and doesn&apos;t record.
+      </p>
+      <p>
+        <strong>Your choice.</strong> Engram asks once: at the end of the first-run tour, or, if you updated from an
+        earlier version or skipped the tour, the first time you open the new version. Nothing is counted until you say
+        yes. Closing the question without answering counts as no. Change your answer any time in{" "}
+        <strong>Settings, Share usage counts</strong>. Saying no, then or later, deletes any counts waiting on your
+        phone. Engram works exactly the same either way.
+      </p>
+      <p><strong>What is sent.</strong> At most once a day, and only for a day that has already ended:</p>
+      <ul>
+        <li>the date and the app version;</li>
+        <li>how many times you used each feature from a fixed list, such as recording a voice note, searching or opening the map;</li>
+        <li>which of a few settings are on, such as the black theme or app lock;</li>
+        <li>
+          three rough ranges: on how many of the last 7 days you opened Engram, how long it has been installed, and
+          roughly how many notes you keep (for example &ldquo;10 to 99&rdquo;).
+        </li>
+      </ul>
+      <p>
+        The full list is in{" "}
+        <a href="https://github.com/pavitra14/engram/blob/main/docs/METRICS.md" rel="noopener">METRICS.md</a>.{" "}
+        <strong>Settings, What&apos;s sent</strong> shows today&apos;s counts in plain words.
+      </p>
+      <p>
+        <strong>What is never sent.</strong> Your notes, titles, tags, search words, recordings, photos or file names. No
+        id for you, your phone or this install. No time of day, no order of what you did, no location, no device model,
+        no contacts.
+      </p>
+      <p>
+        <strong>What we keep.</strong> Only totals: for each day, how many installs used each feature and how often,
+        added up across everyone. Your message is added to those totals and not stored as it was sent. Like any internet
+        request, it reaches our host from your IP address; the host&apos;s gateway may keep that briefly in its request
+        logs, but it is never stored with the counts.
+      </p>
+      <p>
+        <strong>Where.</strong> In Engram&apos;s own database at Supabase, Mumbai region. No analytics company receives
+        it.
+      </p>
+      <p>
+        <strong>How long.</strong> The totals are kept while Engram is developed. They hold nothing that can be tied to
+        you, so there is nothing to look up or delete for one person.
       </p>
 
       <h2 id="cloud">Engram Cloud (optional, currently switched off)</h2>
@@ -191,7 +249,8 @@ export default function Privacy() {
       <p>
         Engram is not directed at children. If you are under the age at which your local law lets you consent to the use
         of your personal information, do not create an Engram Cloud account without a parent&apos;s or guardian&apos;s
-        permission. The app without an account collects no personal information about anyone.
+        permission. The app without an account collects no personal information about anyone; usage counts, if switched
+        on, hold nothing that identifies a person.
       </p>
 
       <h2 id="rights">Your choices and rights</h2>
@@ -213,7 +272,9 @@ export default function Privacy() {
       <h2 id="changes">Changes to this policy</h2>
       <p>
         When the app changes what it does with information, this page changes first. The date at the top shows the latest
-        version. Any new upload of your content will need your agreement in the app before it starts.
+        version. Any new upload of your content will need your agreement in the app before it starts. We will never add
+        an id, a record of individual actions, or anything you wrote to usage counts. If we add a new count, we will list
+        it here and in METRICS.md before the version that sends it.
       </p>
 
       <h2 id="contact">Contact</h2>

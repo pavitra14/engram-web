@@ -6,7 +6,7 @@ export const CONTACT_EMAIL = "contact@engrm.app";
 
 export const SITE_URL = (process.env.SITE_URL || "https://engrm.app").replace(/\/$/, "");
 
-/** Google Tag Manager container for the website only. The app has no analytics. */
+/** Google Tag Manager container for the website only. The app has no tracking; its optional usage counts are described on /privacy. */
 export const GTM_ID = process.env.GTM_ID || "GTM-TZQLPM9D";
 
 export const SITE_NAME = "Engram";
@@ -14,8 +14,8 @@ export const TAGLINE = "Catch the thought before the next notification does.";
 export const DESCRIPTION =
   "Engram is a free second brain for your Android phone. Save any idea in one step by voice, typing or sharing from any app, and it organises itself. No account, no ads, and your notes never leave your phone.";
 
-export const LEGAL_EFFECTIVE = "17 November 2026";
-export const LEGAL_EFFECTIVE_ISO = "2026-11-17";
+export const LEGAL_EFFECTIVE = "18 November 2026";
+export const LEGAL_EFFECTIVE_ISO = "2026-11-18";
 
 /**
  * IndexNow key (Bing, Yandex, Naver, Seznam and others). It is public by
@@ -24,16 +24,19 @@ export const LEGAL_EFFECTIVE_ISO = "2026-11-17";
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "b0f45ef57cc423f9023f2bf088cdfee1";
 
 export type Release = {
+  /** The release's tag, e.g. "v0.7.0-beta.2", or "" when GitHub could not be reached. */
   tag: string;
-  /** Human version, e.g. "0.7.0 beta 2" */
+  /** Human version, e.g. "0.7.0 beta 2", or "" when unknown. */
   label: string;
   url: string;
   publishedAt?: string;
 };
 
+// No version is written into the site: if GitHub can't be reached, the page links to
+// the latest release and leaves the number out until the next successful read.
 const FALLBACK: Release = {
-  tag: "v0.7.0-beta.2",
-  label: "0.7.0 beta 2",
+  tag: "",
+  label: "",
   url: RELEASES_URL,
 };
 
@@ -47,8 +50,9 @@ export function humanVersion(tag: string): string {
 
 /**
  * The newest published release, read on the server and cached for an hour,
- * so the page always names the current beta without a redeploy.
- * Falls back to the last known release if GitHub can't be reached.
+ * so the page always names the current version without a redeploy.
+ * GitHub's "latest" skips pre-releases, so a build still being tested never shows here.
+ * If GitHub can't be reached, there is no version to show and the links go to the releases page.
  */
 export async function getLatestRelease(): Promise<Release> {
   try {
