@@ -6,6 +6,9 @@ export const CONTACT_EMAIL = "contact@engrm.app";
 
 export const SITE_URL = (process.env.SITE_URL || "https://engrm.app").replace(/\/$/, "");
 
+/** Google Tag Manager container for the website only. The app has no analytics. */
+export const GTM_ID = process.env.GTM_ID || "GTM-TZQLPM9D";
+
 export const SITE_NAME = "Engram";
 export const TAGLINE = "Catch the thought before the next notification does.";
 export const DESCRIPTION =

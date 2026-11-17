@@ -6,7 +6,7 @@ import { CONTACT_EMAIL, ISSUES_URL, LEGAL_EFFECTIVE } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description:
-    "What Engram does with your information. Short version: what you write stays on your phone. No account, no ads, no analytics, no tracking.",
+    "What Engram does with your information. Short version: what you write stays on your phone. No account, no ads, no analytics in the app.",
   path: "/privacy",
 });
 
@@ -40,7 +40,7 @@ export default function Privacy() {
 
       <h2 id="short">The short version</h2>
       <ul>
-        <li>Engram has no analytics, no advertising and no tracking. We do not sell, rent or share your information.</li>
+        <li>The Engram app has no analytics, no advertising and no tracking. We do not sell, rent or share your information.</li>
         <li>Everything you capture is stored in the app&apos;s private storage on your phone.</li>
         <li>You need no account. Without one, none of your notes, recordings, photos or files leave the phone.</li>
         <li>The app makes a few network requests that carry none of your content. They are listed below.</li>
@@ -165,8 +165,19 @@ export default function Privacy() {
 
       <h2 id="website">This website</h2>
       <ul>
-        <li>This website sets no cookies and uses no analytics, ads, trackers or third-party scripts.</li>
-        <li>Fonts and images are served from this website itself, so visiting it doesn&apos;t contact Google or anyone else.</li>
+        <li>
+          This website (not the app) uses Google Tag Manager and Google Analytics to count visits and see which pages
+          people find useful. When you visit, Google receives your IP address, browser and device details and the pages
+          you view, and may set cookies to tell visits apart. Google processes this under its own{" "}
+          <a href="https://policies.google.com/privacy" rel="noopener">privacy policy</a>. We don&apos;t use it to identify
+          you, and we don&apos;t run ads.
+        </li>
+        <li>
+          You can opt out by blocking cookies or scripts from Google in your browser, or with Google&apos;s{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics opt-out add-on</a>. The site works the
+          same without it.
+        </li>
+        <li>Fonts and images are served from this website itself.</li>
         <li>
           Like any web server, ours keeps short-lived technical logs (such as IP address, browser type and the page
           requested) to keep the site running and secure. We don&apos;t use them to identify or profile you.

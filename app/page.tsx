@@ -371,7 +371,7 @@ export default async function Home() {
           <div>
             <ul className="ticks">
               <li><Check /> No account needed. Ever.</li>
-              <li><Check /> No ads, no analytics, no tracking.</li>
+              <li><Check /> No ads, no analytics, no tracking in the app.</li>
               <li><Check /> Voice is turned into text on your phone.</li>
               <li><Check /> Text in photos is read on your phone, too.</li>
               <li><Check /> Downloads happen only when you switch a feature on.</li>

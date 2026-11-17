@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@fontsource/newsreader/400.css";
 import "@fontsource/newsreader/500.css";
 import "@fontsource/newsreader/400-italic.css";
@@ -9,7 +10,7 @@ import "@fontsource/inter/600.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DESCRIPTION, REPO_URL, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+import { DESCRIPTION, GTM_ID, REPO_URL, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
 import { OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -76,6 +77,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        {/* Google Tag Manager (website analytics only; the app has none) */}
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});`}
+        </Script>
+        <Script id="gtm" strategy="afterInteractive" src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} />
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <a href="#main" className="skip">Skip to content</a>
         <Header />
         <main id="main">{children}</main>

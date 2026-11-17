@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
         <div className="base">
           <span>© {new Date().getFullYear()} Engram. All rights reserved.</span>
-          <span>No cookies. No tracking. Not even here.</span>
+          <span>No ads. Your notes never leave your phone.</span>
         </div>
       </div>
     </footer>

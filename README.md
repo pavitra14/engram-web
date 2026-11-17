@@ -64,7 +64,7 @@ Lighthouse (mobile, home page): SEO 100, accessibility 100, best practices 100, 
 
 Follows the app's design system (`docs/DESIGN.md` in the engram repo): Newsreader for headlines and the person's words, Inter for everything else, paper-and-ink light theme and a true-black dark theme picked from the visitor's system setting, pills and hairlines, no shadows, and one loud cobalt button per view. Screenshots in `public/screens/` come from `docs/screenshots/` in the app repo.
 
-No cookies, analytics or third-party requests: fonts are self-hosted from `@fontsource`.
+Fonts are self-hosted from `@fontsource`. The only third-party script is Google Tag Manager (`GTM_ID` in `lib/site.ts`, overridable with the `GTM_ID` environment variable), for website analytics; the privacy page describes it. The app itself has no analytics.
 
 ## Keeping the legal pages in step
 
