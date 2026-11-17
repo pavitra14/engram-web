@@ -12,6 +12,13 @@ export const DESCRIPTION =
   "Engram is a free second brain for your Android phone. Save any idea in one step by voice, typing or sharing from any app, and it organises itself. No account, no ads, and your notes never leave your phone.";
 
 export const LEGAL_EFFECTIVE = "17 November 2026";
+export const LEGAL_EFFECTIVE_ISO = "2026-11-17";
+
+/**
+ * IndexNow key (Bing, Yandex, Naver, Seznam and others). It is public by
+ * design: search engines fetch it from /indexnow.txt to confirm we own the site.
+ */
+export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "b0f45ef57cc423f9023f2bf088cdfee1";
 
 export type Release = {
   tag: string;

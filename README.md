@@ -15,7 +15,7 @@ Next.js (App Router). Every page is rendered on the server, so search engines an
 | `/download` | Redirect to the latest GitHub release |
 | `/bugs` | Redirect to a new GitHub issue |
 | `/tnc`, `/privacy-policy`, `/terms-and-conditions` | Permanent redirects to the legal pages |
-| `/sitemap.xml`, `/robots.txt`, `/opengraph-image` | SEO and social cards |
+| `/sitemap.xml`, `/robots.txt`, `/opengraph-image`, `/manifest.webmanifest`, `/llms.txt`, `/indexnow.txt` | SEO, social cards, AI summaries, IndexNow key |
 | `/api/health` | Health check for Coolify |
 
 ## Develop
@@ -33,9 +33,28 @@ npm run build && npm start
 3. Port: **3000**.
 4. Environment variables:
    - `SITE_URL` = your public URL, e.g. `https://engram.pavitra.dev` (used for canonical links, sitemap and social cards). Mark it as a **build variable** too, since pages are pre-rendered at build time.
+   - Search engine verification codes (optional): `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `YANDEX_VERIFICATION`, `NAVER_SITE_VERIFICATION`.
    - `GITHUB_TOKEN` (optional) = a read-only token, only if you hit GitHub's anonymous rate limit when reading the latest release.
 5. Health check path: `/api/health`.
 6. Add your domain and deploy.
+
+## Search engines and indexing
+
+Built in:
+
+- `/sitemap.xml` (with screenshot images) and `/robots.txt`, which point crawlers at it. AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) are allowed.
+- A unique title, description, canonical link, Open Graph and Twitter card on every page; a 1200×630 social image; `noindex` on 404s.
+- Structured data: Organization, WebSite, SoftwareApplication (free, Android) and FAQPage on the home page; breadcrumbs on the other pages.
+- `/manifest.webmanifest`, and `/llms.txt`, a plain-text summary for AI assistants.
+- **IndexNow:** each time the server starts (every deploy), it tells Bing, Yandex, Naver, Seznam and other IndexNow engines about all pages, about 30 s after boot. Look for `[indexnow] submitted` in the Coolify logs. The key is served at `/indexnow.txt`; override with `INDEXNOW_KEY`, or turn it off with `INDEXNOW=off`.
+
+One-time steps only the site owner can do (each takes a few minutes):
+
+1. **Google Search Console** (search.google.com/search-console): add the domain property, verify with a DNS TXT record (or set `GOOGLE_SITE_VERIFICATION` to the meta-tag code and redeploy), then submit `https://<domain>/sitemap.xml`.
+2. **Bing Webmaster Tools** (bing.com/webmasters): "Import from Google Search Console" in one click, or verify with `BING_SITE_VERIFICATION`. Bing also powers DuckDuckGo, Yahoo, Ecosia and ChatGPT search.
+3. Optional: **Yandex Webmaster** (`YANDEX_VERIFICATION`) and **Naver Search Advisor** (`NAVER_SITE_VERIFICATION`).
+
+Lighthouse (mobile, home page): SEO 100, accessibility 100, best practices 100, performance 95.
 
 ## Design
 

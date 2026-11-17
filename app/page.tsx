@@ -2,10 +2,19 @@ import Link from "next/link";
 import Phone from "@/components/Phone";
 import CaptureDemo from "@/components/CaptureDemo";
 import { Arrow, Bug, Camera, Check, Clip, Download, Lock, Mic, Pen, Share, Tile, Widget } from "@/components/icons";
+import type { Metadata } from "next";
 import { DESCRIPTION, NEW_ISSUE_URL, REPO_URL, SITE_URL, getLatestRelease } from "@/lib/site";
+import { JsonLd, organizationLd, pageMeta, websiteLd } from "@/lib/seo";
 
 // Re-render on the server at most once an hour so the beta version stays current.
 export const revalidate = 3600;
+
+export const metadata: Metadata = pageMeta({
+  title: "Engram: a free second brain for your phone",
+  description: DESCRIPTION,
+  path: "/",
+  absoluteTitle: true,
+});
 
 const FAQ: { q: string; a: string }[] = [
   {
@@ -46,11 +55,26 @@ export default async function Home() {
   const release = await getLatestRelease();
 
   const jsonLd = [
+    organizationLd,
+    websiteLd,
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       name: "Engram",
       applicationCategory: "ProductivityApplication",
+      applicationSubCategory: "Note taking",
+      alternateName: "Engram: second brain",
+      image: `${SITE_URL}/screens/today.webp`,
+      screenshot: ["today", "map", "note", "todo"].map((s) => `${SITE_URL}/screens/${s}.webp`),
+      featureList: [
+        "Save ideas from the share sheet, voice, widget or Quick Settings tile",
+        "Voice notes transcribed on the phone",
+        "Automatic linking and grouping by meaning",
+        "Reminders from plain words",
+        "Works offline, no account, nothing uploaded",
+      ],
+      publisher: { "@id": `${SITE_URL}/#org` },
+      isAccessibleForFree: true,
       operatingSystem: "Android 7.0 or later",
       description: DESCRIPTION,
       softwareVersion: release.tag.replace(/^v/, ""),
@@ -72,7 +96,7 @@ export default async function Home() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
 
       {/* ---------- Hero ---------- */}
       <section className="hero">

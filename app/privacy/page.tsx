@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd, breadcrumbLd, pageMeta } from "@/lib/seo";
 import { CONTACT_EMAIL, ISSUES_URL, LEGAL_EFFECTIVE } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description:
     "What Engram does with your information. Short version: what you write stays on your phone. No account, no ads, no analytics, no tracking.",
-  alternates: { canonical: "/privacy" },
-  openGraph: { title: "Privacy Policy · Engram", url: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (
     <article className="doc">
+      <JsonLd data={breadcrumbLd("Privacy Policy", "/privacy")} />
       <h1>Privacy Policy</h1>
       <p className="updated">
         Effective {LEGAL_EFFECTIVE}. Applies to Engram for Android, version 0.7 and later, and to this website.

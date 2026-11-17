@@ -9,7 +9,8 @@ import "@fontsource/inter/600.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DESCRIPTION, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+import { DESCRIPTION, REPO_URL, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+import { OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,21 +33,33 @@ export const metadata: Metadata = {
     "attention span",
     "engram",
   ],
-  alternates: { canonical: "/" },
+  authors: [{ name: "pavitra14", url: REPO_URL }],
+  creator: "pavitra14",
+  publisher: SITE_NAME,
+  category: "productivity",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     title: `${SITE_NAME}: ${TAGLINE}`,
     description: DESCRIPTION,
-    url: "/",
     locale: "en_US",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME}: ${TAGLINE}`,
     description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
-  robots: { index: true, follow: true },
+  // Set these in Coolify to verify ownership with each search engine.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    yandex: process.env.YANDEX_VERIFICATION || undefined,
+    other: {
+      ...(process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : {}),
+      ...(process.env.NAVER_SITE_VERIFICATION ? { "naver-site-verification": process.env.NAVER_SITE_VERIFICATION } : {}),
+    },
+  },
   formatDetection: { telephone: false },
 };
 

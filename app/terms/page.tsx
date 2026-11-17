@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd, breadcrumbLd, pageMeta } from "@/lib/seo";
 import { CONTACT_EMAIL, ISSUES_URL, LEGAL_EFFECTIVE, REPO_URL, RELEASES_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Terms of Use",
   description: "The terms for using Engram, the free, local-first second brain for Android, and the Engram website.",
-  alternates: { canonical: "/terms" },
-  openGraph: { title: "Terms of Use · Engram", url: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function Terms() {
   return (
     <article className="doc">
+      <JsonLd data={breadcrumbLd("Terms of Use", "/terms")} />
       <h1>Terms of Use</h1>
       <p className="updated">
         Effective {LEGAL_EFFECTIVE}. Applies to Engram for Android, version 0.7 and later, and to this website.

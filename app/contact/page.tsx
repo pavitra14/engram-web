@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Bug, Mail } from "@/components/icons";
-import { CONTACT_EMAIL, NEW_ISSUE_URL } from "@/lib/site";
+import { JsonLd, breadcrumbLd, pageMeta } from "@/lib/seo";
+import { CONTACT_EMAIL, NEW_ISSUE_URL, SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact",
   description: `Get in touch with the Engram team at ${CONTACT_EMAIL}, or report a bug on GitHub.`,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact · Engram", url: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function Contact() {
   return (
     <article className="doc">
+      <JsonLd data={[breadcrumbLd("Contact", "/contact"), { "@context": "https://schema.org", "@type": "ContactPage", name: "Contact Engram", url: `${SITE_URL}/contact` }]} />
       <h1>Say hello.</h1>
       <p className="lead" style={{ marginTop: 20 }}>
         Questions, ideas, press, partnerships, or just a story about the idea Engram saved for you. We read everything.
