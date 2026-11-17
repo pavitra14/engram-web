@@ -1,5 +1,7 @@
 # engram-web
 
+**Live at [engram.pavitra.dev](https://engram.pavitra.dev)** · [Privacy](https://engram.pavitra.dev/privacy) · [Terms](https://engram.pavitra.dev/terms) · [Contact](https://engram.pavitra.dev/contact)
+
 The landing website for [Engram](https://github.com/pavitra14/engram), the local-first second brain for Android.
 
 Next.js (App Router). Every page is rendered on the server, so search engines and direct links (`/privacy`, `/terms`, `/contact`) get full HTML with no client-side routing needed. The home page re-renders on the server once an hour and reads the newest GitHub release, so the beta version shown on the site updates itself after each app release.
@@ -50,7 +52,7 @@ Built in:
 
 One-time steps only the site owner can do (each takes a few minutes):
 
-1. **Google Search Console** (search.google.com/search-console): add the domain property, verify with a DNS TXT record (or set `GOOGLE_SITE_VERIFICATION` to the meta-tag code and redeploy), then submit `https://<domain>/sitemap.xml`.
+1. **Google Search Console** (search.google.com/search-console): add the domain property `engram.pavitra.dev`, verify with a DNS TXT record (or set `GOOGLE_SITE_VERIFICATION` to the meta-tag code and redeploy), then submit `https://engram.pavitra.dev/sitemap.xml`.
 2. **Bing Webmaster Tools** (bing.com/webmasters): "Import from Google Search Console" in one click, or verify with `BING_SITE_VERIFICATION`. Bing also powers DuckDuckGo, Yahoo, Ecosia and ChatGPT search.
 3. Optional: **Yandex Webmaster** (`YANDEX_VERIFICATION`) and **Naver Search Advisor** (`NAVER_SITE_VERIFICATION`).
 
@@ -61,6 +63,10 @@ Lighthouse (mobile, home page): SEO 100, accessibility 100, best practices 100, 
 Follows the app's design system (`docs/DESIGN.md` in the engram repo): Newsreader for headlines and the person's words, Inter for everything else, paper-and-ink light theme and a true-black dark theme picked from the visitor's system setting, pills and hairlines, no shadows, and one loud cobalt button per view. Screenshots in `public/screens/` come from `docs/screenshots/` in the app repo.
 
 No cookies, analytics or third-party requests: fonts are self-hosted from `@fontsource`.
+
+## Keeping the legal pages in step
+
+`app/privacy/page.tsx` and `app/terms/page.tsx` are the published copies of `docs/PRIVACY.md` and `docs/TERMS.md` in the app repo, plus a section on this website. Change both together.
 
 ## License
 

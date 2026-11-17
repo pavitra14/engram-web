@@ -25,5 +25,10 @@
   "private": true,
   "engines": {
     "node": ">=20.9"
+  },
+  "homepage": "https://engram.pavitra.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pavitra14/engram-web"
   }
 }
