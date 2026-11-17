@@ -1,6 +1,8 @@
 # engram-web
 
-**Live at [engram.pavitra.dev](https://engram.pavitra.dev)** · [Privacy](https://engram.pavitra.dev/privacy) · [Terms](https://engram.pavitra.dev/terms) · [Contact](https://engram.pavitra.dev/contact)
+**Live at [engrm.app](https://engrm.app)** · [Privacy](https://engrm.app/privacy) · [Terms](https://engrm.app/terms) · [Contact](https://engrm.app/contact)
+
+The domain is `engrm.app`, spelled without the "a" on purpose because engram.app was taken. The product is still called **Engram** everywhere on the site. The old address, engram.pavitra.dev, redirects here permanently (see `next.config.ts`); keep it attached in Coolify so the redirect keeps working.
 
 The landing website for [Engram](https://github.com/pavitra14/engram), the local-first second brain for Android.
 
@@ -13,7 +15,7 @@ Next.js (App Router). Every page is rendered on the server, so search engines an
 | `/` | Landing page: the attention problem, how it works, a try-it demo, features, habits, privacy, beta + bug reports, FAQ |
 | `/privacy` | Privacy Policy (app + website) |
 | `/terms` | Terms of Use |
-| `/contact` | Contact: engram@pavitra.dev and GitHub issues |
+| `/contact` | Contact: contact@engrm.app and GitHub issues |
 | `/download` | Redirect to the latest GitHub release |
 | `/bugs` | Redirect to a new GitHub issue |
 | `/tnc`, `/privacy-policy`, `/terms-and-conditions` | Permanent redirects to the legal pages |
@@ -34,7 +36,7 @@ npm run build && npm start
 2. Build pack: **Dockerfile** (the repo's `Dockerfile` is picked up automatically).
 3. Port: **3000**.
 4. Environment variables:
-   - `SITE_URL` = your public URL, e.g. `https://engram.pavitra.dev` (used for canonical links, sitemap and social cards). Mark it as a **build variable** too, since pages are pre-rendered at build time.
+   - `SITE_URL` = your public URL, e.g. `https://engrm.app` (used for canonical links, sitemap and social cards). Mark it as a **build variable** too, since pages are pre-rendered at build time.
    - Search engine verification codes (optional): `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `YANDEX_VERIFICATION`, `NAVER_SITE_VERIFICATION`.
    - `GITHUB_TOKEN` (optional) = a read-only token, only if you hit GitHub's anonymous rate limit when reading the latest release.
 5. Health check path: `/api/health`.
@@ -52,7 +54,7 @@ Built in:
 
 One-time steps only the site owner can do (each takes a few minutes):
 
-1. **Google Search Console** (search.google.com/search-console): add the domain property `engram.pavitra.dev`, verify with a DNS TXT record (or set `GOOGLE_SITE_VERIFICATION` to the meta-tag code and redeploy), then submit `https://engram.pavitra.dev/sitemap.xml`.
+1. **Google Search Console** (search.google.com/search-console): add the domain property `engrm.app`, verify with a DNS TXT record (or set `GOOGLE_SITE_VERIFICATION` to the meta-tag code and redeploy), then submit `https://engrm.app/sitemap.xml`.
 2. **Bing Webmaster Tools** (bing.com/webmasters): "Import from Google Search Console" in one click, or verify with `BING_SITE_VERIFICATION`. Bing also powers DuckDuckGo, Yahoo, Ecosia and ChatGPT search.
 3. Optional: **Yandex Webmaster** (`YANDEX_VERIFICATION`) and **Naver Search Advisor** (`NAVER_SITE_VERIFICATION`).
 

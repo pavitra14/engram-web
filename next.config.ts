@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
   // Short, shareable links.
   async redirects() {
     return [
+      // The site moved from engram.pavitra.dev to engrm.app; keep old links and search results working.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "engram.pavitra.dev" }],
+        destination: "https://engrm.app/:path*",
+        permanent: true,
+      },
       { source: "/download", destination: `${REPO}/releases/latest`, permanent: false },
       { source: "/bugs", destination: `${REPO}/issues/new`, permanent: false },
       { source: "/github", destination: REPO, permanent: false },

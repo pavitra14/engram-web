@@ -2,9 +2,9 @@ export const REPO_URL = "https://github.com/pavitra14/engram";
 export const RELEASES_URL = `${REPO_URL}/releases/latest`;
 export const ISSUES_URL = `${REPO_URL}/issues`;
 export const NEW_ISSUE_URL = `${REPO_URL}/issues/new`;
-export const CONTACT_EMAIL = "engram@pavitra.dev";
+export const CONTACT_EMAIL = "contact@engrm.app";
 
-export const SITE_URL = (process.env.SITE_URL || "https://engram.pavitra.dev").replace(/\/$/, "");
+export const SITE_URL = (process.env.SITE_URL || "https://engrm.app").replace(/\/$/, "");
 
 export const SITE_NAME = "Engram";
 export const TAGLINE = "Catch the thought before the next notification does.";

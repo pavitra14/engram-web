@@ -43,7 +43,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "How do I report a bug or ask for a feature?",
-    a: "Open an issue on GitHub at github.com/pavitra14/engram/issues. Say what you did, what you expected and what happened. Please leave personal details out. You can also email engram@pavitra.dev.",
+    a: "Open an issue on GitHub at github.com/pavitra14/engram/issues. Say what you did, what you expected and what happened. Please leave personal details out. You can also email contact@engrm.app.",
   },
   {
     q: "Is Engram open source?",
